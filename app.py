@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, redirect, url_for
 from flask_login import LoginManager, login_required, current_user
 
@@ -8,8 +9,7 @@ from internship_routes import internship_bp
 
 
 app = Flask(__name__)
-
-app.config["SECRET_KEY"] = "career-compass-secret"
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "career-compass-secret")
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///career_compass.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 

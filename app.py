@@ -8,7 +8,7 @@ from dsa_routes import dsa_bp
 from internship_routes import internship_bp
 
 
-app = Flask(__name__)
+app = Flask(__name__, instance_path="/tmp")
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "career-compass-secret")
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///career_compass.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False

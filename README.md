@@ -104,29 +104,3 @@ The Internship Tracker helps users organize and monitor internship applications.
 
 Career Compass uses a modular Flask structure with separate route modules for authentication, DSA tracking, and internship tracking.
 
-
-Career-Compass/
-│
-├── static/
-│   ├── dsastyle.css
-│   ├── internship_script.js
-│   ├── internshipstyle.css
-│   ├── loginstyle.css
-│   ├── registerstyle.css
-│   ├── script.js
-│   └── style.css
-│
-├── templates/
-│   ├── dsa.html
-│   ├── home.html
-│   ├── internship.html
-│   ├── login.html
-│   └── register.html
-│
-├── app.py
-├── auth_routes.py
-├── dsa_routes.py
-├── internship_routes.py
-├── models.py
-├── requirements.txt
-└── .gitignore

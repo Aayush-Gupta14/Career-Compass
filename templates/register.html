@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Career Compass | Register</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='registerstyle.css') }}"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <main>
+      <div class="auth-container">
+        <div class="hero">
+          <h1>Career Compass</h1>
+
+          <p>Your Personal Career Growth Dashboard</p>
+        </div>
+        <div class="auth-card">
+          <h1>Create Account</h1>
+
+          {% with messages = get_flashed_messages(with_categories=true) %} {% if
+          messages %} {% for category, message in messages %}
+          <div class="flash-message {{ category }}">{{ message }}</div>
+          {% endfor %} {% endif %} {% endwith %}
+
+          <form method="POST">
+            <div class="form-group">
+              <label for="username">Username</label>
+
+              <input
+                type="text"
+                id="username"
+                name="username"
+                spellcheck="false"
+                placeholder="Enter your username"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password</label>
+
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Create a password"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="confirm_password">Confirm Password</label>
+
+              <input
+                type="password"
+                id="confirm_password"
+                name="confirm_password"
+                placeholder="Confirm your password"
+                required
+              />
+            </div>
+
+            <button type="submit" class="register-btn">Create Account</button>
+          </form>
+
+          <div class="login-link">
+            <p>
+              Already have an account?
+              <a href="{{ url_for('auth.login') }}">Login</a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <p>Made with &hearts; from Aayush Gupta</p>
+      </footer>
+    </main>
+  </body>
+</html>

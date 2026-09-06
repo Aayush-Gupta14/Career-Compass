@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Career Compass | Home</title>
+</head>
+
+<body>
+
+<main class="container">
+
+    <!-- Navigation -->
+    <header class="navbar">
+
+        <h2 class="logo">
+            Career Compass
+        </h2>
+
+        <a class="logout-btn" href="{{ url_for('auth.logout') }}">
+            Logout
+        </a>
+
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+
+        <div class="badge">
+            Placement Preparation
+        </div>
+
+        <h1>
+            Welcome back, {{ current_user.username }} 👋
+        </h1>
+
+        <p class="tagline">
+            Continue tracking your DSA progress and internship journey.
+        </p>
+
+    </section>
+
+    <!-- Cards -->
+    <section class="cards">
+
+        <article class="card">
+
+            <h2>
+                📚 DSA Tracker
+            </h2>
+
+            <p>
+                Track coding problems, monitor your progress, and stay consistent with your interview preparation.
+            </p>
+
+            <a href="{{ url_for('dsa.dsa') }}">
+                Start Preparation →
+            </a>
+
+        </article>
+
+        <article class="card">
+
+            <h2>
+                💼 Internship Tracker
+            </h2>
+
+            <p>
+                Organize internship applications, monitor application status, and keep your placement journey on track.
+            </p>
+
+            <a href="{{ url_for('internship.internship') }}">
+                Track Applications →
+            </a>
+
+        </article>
+
+    </section>
+
+    <footer>
+        <p>Made with &hearts; from Aayush Gupta</p>
+    </footer>
+
+</main>
+
+</body>
+</html>

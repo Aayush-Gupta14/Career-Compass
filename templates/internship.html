@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Compass | Internship Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='internshipstyle.css') }}">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <main class="container">
+
+        <nav class="navbar">
+
+        <div class="nav-left">
+            <a href="{{ url_for('home') }}" class="logo">
+                Career Compass
+            </a>
+        </div>
+
+        <div class="nav-center">
+            <a href="{{ url_for('home') }}" class="nav-link">
+                Home
+            </a>
+
+            <a href="{{ url_for('dsa.dsa') }}" class="nav-link">
+                DSA
+            </a>
+        </div>
+
+        <div class="nav-right">
+            <a href="{{ url_for('auth.logout') }}" class="logout-btn">
+                Logout
+            </a>
+        </div>
+
+    </nav>
+
+    <section class="hero">
+
+        <h1>Internship Tracker</h1>
+
+        <p class="description">
+            Organize internship applications and monitor your placement journey.
+        </p>
+
+    </section>
+        <!-- Statistics Cards -->
+        <section class="stats-cards">
+
+            <article class="stat-card">
+                <div class="card-header">
+                    <p class="card-title">TOTAL APPLICATIONS</p>
+                    <span class="card-icon">
+                         <i data-lucide="briefcase-business"></i>
+                    </span>
+                </div>
+
+                <h2 class="card-value">{{ total }}</h2>
+            </article>
+
+            <article class="stat-card">
+                <div class="card-header">
+                    <p class="card-title">INTERVIEWS</p>
+                    <span class="card-icon">
+                        <i data-lucide="calendar-days"></i>
+                    </span>
+                </div>
+
+                <h2 class="card-value">{{ interviews }}</h2>
+            </article>
+
+            <article class="stat-card">
+                <div class="card-header">
+                    <p class="card-title">OFFERS</p>
+                    <span class="card-icon">
+                        <i data-lucide="badge-check"></i>
+                    </span>
+                </div>
+
+                <h2 class="card-value">{{ offers }}</h2>
+            </article>
+
+            <article class="stat-card">
+                <div class="card-header">
+                    <p class="card-title">REJECTED</p>
+                    <span class="card-icon">
+                        <i data-lucide="circle-x"></i>
+                    </span>
+                </div>
+
+                <h2 class="card-value">{{ rejected }}</h2>
+            </article>
+
+        </section>
+
+        <!-- Add Internship Section -->
+        <section class="add-internship">
+
+            <h2>Add Internship</h2>
+
+            <p class="section-description">
+                Log a new internship application.
+            </p>
+
+            <form method="POST" class="internship-form">
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input
+                            type="text"
+                            id="company"
+                            name="company"
+                            placeholder="e.g. Google"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="role">Role</label>
+                        <input
+                            type="text"
+                            id="role"
+                            name="role"
+                            placeholder="e.g. Software Engineer Intern"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input
+                            type="text"
+                            id="location"
+                            name="location"
+                            placeholder="e.g. Bangalore / Remote"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="link">Application Link</label>
+                        <input
+                            type="url"
+                            id="link"
+                            name="link"
+                            placeholder="https://..."
+                        >
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label for="application-date">Application Date</label>
+                        <input
+                            type="date"
+                            id="application-date"
+                            name="application_date"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="deadline">Deadline</label>
+                        <input
+                            type="date"
+                            id="deadline"
+                            name="deadline"
+                        >
+                    </div>
+
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="status">Status</label>
+
+                    <select id="status" name="status">
+
+                        <option value="Applied">Applied</option>
+                        <option value="OA Scheduled">OA Scheduled</option>
+                        <option value="Interview">Interview</option>
+                        <option value="Offer">Offer</option>
+                        <option value="Accepted">Accepted</option>
+                        <option value="Rejected">Rejected</option>
+
+                    </select>
+                </div>
+
+                <div class="form-group full-width">
+
+                    <label for="notes">Notes</label>
+
+                    <textarea
+                        id="notes"
+                        name="notes"
+                        rows="5"
+                        placeholder="Interview rounds, recruiter contact, referral details, or any additional notes..."
+                    ></textarea>
+
+                </div>
+
+                <button type="submit" class="add-btn">
+                    + Add Internship
+                </button>
+
+            </form>
+
+        </section>
+        <!-- Applications Section -->
+<section class="applications-section">
+
+    <div class="section-header">
+
+        <div>
+            <h2>Your Applications</h2>
+        </div>
+
+        <p class="application-count" id="applicationCount">
+            {{ total }} of {{ total }} shown
+        </p>
+
+    </div>
+
+    <!-- Search & Filters -->
+    <div class="search-filter-container">
+
+        <div class="search-box">
+            <input
+                type="text"
+                id="search"
+                placeholder="Search by company or role..."
+            >
+        </div>
+
+        <div class="filter-group">
+
+            <select id="status-filter">
+                <option value="all">All Status</option>
+                <option value="Applied">Applied</option>
+                <option value="OA Scheduled">OA Scheduled</option>
+                <option value="Interview">Interview</option>
+                <option value="Offer">Offer</option>
+                <option value="Accepted">Accepted</option>
+                <option value="Rejected">Rejected</option>
+            </select>
+
+            <select id="location-filter">
+                <option value="all">All Locations</option>
+                <option value="Remote">Remote</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Noida">Noida</option>
+                <option value="Gurgaon">Gurgaon</option>
+            </select>
+
+
+        </div>
+
+    </div>
+
+    <!-- Internship Cards -->
+    <div class="internship-list">
+
+    {% if internships %}
+
+        {% for internship in internships %}
+
+        <article class="internship-card searchable-card">
+
+    <div class="card-top">
+
+        <div class="card-info">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h3 class="company-name">
+                        {{ internship.company }}
+                    </h3>
+
+                    <p class="role-name">
+                        {{ internship.role }}
+                    </p>
+
+                </div>
+
+                <span class="status-badge internship-status {{ internship.status|lower|replace(' ','-') }}">
+                    {{ internship.status }}
+                </span>
+
+            </div>
+
+            <div class="card-meta">
+
+                <p class="internship-location">
+                    📍 {{ internship.location }}
+                </p>
+
+                <p>
+                    📅 Applied:
+                    <span class="application-date">
+                        {{ internship.application_date }}
+                    </span>
+                </p>
+
+                <p>
+                    ⏳ Deadline:
+                    <span class="deadline-date">
+                        {{ internship.deadline }}
+                    </span>
+                </p>
+
+            </div>
+
+            {% if internship.notes %}
+
+            <div class="notes">
+
+                <strong>Notes:</strong>
+
+                <p>{{ internship.notes }}</p>
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    <div class="card-actions">
+
+        {% if internship.link %}
+
+        <a href="{{ internship.link }}"
+           target="_blank"
+           class="visit-btn">
+
+            Open Application
+
+        </a>
+
+        {% endif %}
+<a href="{{ url_for('internship.delete_internship', id=internship.id) }}"
+   class="delete-btn" onclick="return confirm('Delete this internship?')">
+    Delete
+</a>
+
+<a href="{{ url_for('internship.next_status', id=internship.id) }}"
+   class="status-btn">
+    Next Status
+</a>
+
+    </div>
+
+</article>
+
+{% endfor %}
+
+    {% else %}
+
+        <div class="empty-state">
+
+            <div class="empty-icon">
+                💼
+            </div>
+
+            <h3>No internships yet!</h3>
+
+            <p>
+                Add your first internship application and begin tracking your placement journey.
+            </p>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+</section>
+
+    </main>
+    <footer>
+            <p>Made with &hearts; from Aayush Gupta</p>
+    </footer>
+<script>
+    lucide.createIcons();
+</script>
+<script src="{{ url_for('static', filename='internship_script.js') }}"></script>
+</body>
+</html>

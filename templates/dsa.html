@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='dsastytle.css')}}">
+    <title>Career Compass | DSA Tracker</title>
+</head>
+<body>
+
+    <main class="container">
+
+         <nav class="navbar">
+
+        <div class="nav-left">
+            <a href="{{ url_for('home') }}" class="logo">
+                Career Compass
+            </a>
+        </div>
+
+        <div class="nav-center">
+            <a href="{{ url_for('home') }}" class="nav-link">
+                Home
+            </a>
+
+            <a href="{{ url_for('internship.internship') }}" class="nav-link">
+                Internship
+            </a>
+        </div>
+
+        <div class="nav-right">
+            <a href="{{ url_for('auth.logout') }}" class="logout-btn">
+                Logout
+            </a>
+        </div>
+
+    </nav>
+
+    <section class="hero">
+
+        <h1>DSA Tracker</h1>
+
+        <p class="description">
+            Track your coding journey and stay consistent with interview preparation.
+        </p>
+
+    </section>
+
+        <section class="stats-cards">
+
+            <article class="stat-card">
+
+                <p class="card-title">
+                    TOTAL PROBLEMS
+                </p>
+
+                <h2 class="card-value">
+                        {{ total }}
+                </h2>
+
+            </article>
+
+            <article class="stat-card">
+
+                <p class="card-title">
+                    SOLVED
+                </p>
+
+                <h2 class="card-value">
+                    {{ solved }}
+                </h2>
+
+            </article>
+
+            <article class="stat-card">
+
+                <p class="card-title">
+                    E / M / H
+                </p>
+
+                <h2 class="card-value">
+                    {{ easy }} / {{ medium }} / {{ hard }}
+                </h2>
+
+            </article>
+
+        </section>
+
+        <section  class="add-problem">
+            <h2>
+                Add Problem
+            </h2>
+            <p class="section-description">
+                Log a new problem you're working on.
+            </p>
+
+            <form method="POST" class="problem-form">
+                <div class="form-group full-width">
+                    <label for="problem-name">Problem Name</label>
+                    <input type="text" id="problem-name" name="problem_name" placeholder="e.g. Two Sum">
+                </div>
+                <div class="form-row">
+
+                <div class="form-group">
+                    <label for="platform">Platform</label>
+                    <select id="platform" name="platform">
+                        <option>LeetCode</option>
+                        <option>Codeforces</option>
+                        <option>CodeChef</option>
+                        <option>GeeksforGeeks</option>
+                        <option>HackerRank</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="difficulty">Difficulty</label>
+                    <select id="difficulty" name="difficulty">
+                        <option>Easy</option>
+                        <option>Medium</option>
+                        <option>Hard</option>
+                </select>
+                </div>
+                </div>
+                <div class="form-row">
+
+                <div class="form-group">
+                    <label for="topic">Topic</label>
+
+                    <select id="topic" name="topic">
+                        <option>Array</option>
+                        <option>String</option>
+                        <option>Linked List</option>
+                        <option>Stack</option>
+                        <option>Queue</option>
+                        <option>Tree</option>
+                        <option>Graph</option>
+                        <option>Dynamic Programming</option>
+                        <option>Greedy</option>
+                        <option>Binary Search</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="status">Status</label>
+
+                    <select id="status" name="status">
+                        <option>Not Started</option>
+                        <option>In Progress</option>
+                        <option>Solved</option>
+                    </select>
+                </div>
+                </div>
+                <div class="form-group full-width">
+                    <label for="notes">Notes</label>
+
+                        <textarea id="notes" name="notes" rows="5" placeholder="Approach, edge cases, time complexity..."></textarea>
+                </div>
+                <button type="submit" class="add-btn">
+                    + Add Problem
+                </button>
+            </form>
+        </section>
+
+        <section class="problems-section">
+
+            <h2>Your Problems</h2>
+
+            <p class="problem-count" id="problemCount">
+                {{ total }} of {{ total }} shown
+            </p>
+            <div class="filter-bar">
+                <input type="text" id = "searchInput" placeholder="Search problems...">
+
+                <select id="difficultyFilter">
+                    <option>All Difficulty</option>
+                    <option>Easy</option>
+                    <option>Medium</option>
+                    <option>Hard</option>
+                </select>
+
+                <select id="topicFilter">
+                    <option>All Topics</option>
+                    <option>All Topics</option>
+                    <option>Array</option>
+                    <option>String</option>
+                    <option>Linked List</option>
+                    <option>Stack</option>
+                    <option>Queue</option>
+                    <option>Tree</option>
+                    <option>Graph</option>
+                    <option>Dynamic Programming</option>
+                    <option>Greedy</option>
+                    <option>Binary Search</option>
+                    <option>Other</option>
+                </select>
+
+                <select id="statusFilter">
+                    <option>All Status</option>
+                    <option>Not Started</option>
+                    <option>In Progress</option>
+                    <option>Solved</option>
+                </select>
+
+            </div>
+
+            {% if problems %}
+
+<div class="problem-list">
+
+    {% for problem in problems %}
+
+    <div class="problem-card">
+
+        <div class="problem-header">
+
+            <h3 class="problem-name">
+                {{ problem.name }}
+            </h3>
+
+            <span class="difficulty problem-difficulty {{ problem.difficulty.lower() }}">
+                {{ problem.difficulty }}
+            </span>
+
+        </div>
+
+        <p><strong>Platform:</strong> {{ problem.platform }}</p>
+
+        <p><strong>Topic:</strong> <span class="problem-topic">{{ problem.topic }}</span></p>
+
+        <p><strong>Status:</strong> <span class="problem-status">{{ problem.status }}</span></p>
+
+        <p><strong>Notes:</strong>{{ problem.notes }}</p>
+
+        <div class="problem-actions">
+
+           <a href="{{ url_for('dsa.solve_problem', id=problem.id) }}">
+                Mark As Solved
+            </a>
+
+            <a href="{{ url_for('dsa.delete_problem', id=problem.id)}}" onclick="return  confirm('Delete this problem?')">
+                Delete
+            </a>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% else %}
+
+<div class="empty-state">
+
+    <div class="empty-icon">
+        📘
+    </div>
+
+    <h3> No problems yet!</h3>
+
+    <p>
+        Start your interview preparation by adding your first DSA problem.
+    </p>
+
+</div>
+
+{% endif %}
+        </section>
+    
+    </main>
+    <footer>
+            <p>Made with &hearts; from Aayush Gupta</p>
+    </footer>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -4,7 +4,6 @@ const topicFilter = document.getElementById("topicFilter");
 const statusFilter = document.getElementById("statusFilter");
 const problemCount = document.getElementById("problemCount");
 
-// Run filtering whenever any input changes
 searchInput.addEventListener("keyup", filterProblems);
 difficultyFilter.addEventListener("change", filterProblems);
 topicFilter.addEventListener("change", filterProblems);

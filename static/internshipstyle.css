@@ -8,9 +8,7 @@ html{
     scroll-behavior:smooth;
 }
 
-/* ===========================
-   Navbar
-=========================== */
+
 
 .navbar{
     display:flex;
@@ -429,9 +427,7 @@ textarea{
     line-height:1.7;
 
 }
-/* ===========================
-   Card Header & Icon
-=========================== */
+
 
 .card-header{
     display:flex;
@@ -461,9 +457,7 @@ textarea{
     transform:rotate(8deg) scale(1.08);
 }
 
-/* ===========================
-   Section Header
-=========================== */
+
 
 .section-header{
     display:flex;
@@ -474,9 +468,7 @@ textarea{
     margin-bottom:30px;
 }
 
-/* ===========================
-   Focus Background
-=========================== */
+
 
 .form-group input:focus,
 .form-group select:focus,
@@ -488,9 +480,7 @@ textarea{
 
 }
 
-/* ===========================
-   Better Button
-=========================== */
+
 
 .add-btn:focus-visible{
 
@@ -500,9 +490,7 @@ textarea{
 
 }
 
-/* ===========================
-   Empty State
-=========================== */
+
 
 .empty-state{
 
@@ -532,9 +520,7 @@ textarea{
 
 }
 
-/* ===========================
-   Custom Scrollbar
-=========================== */
+
 
 ::-webkit-scrollbar{
 
@@ -562,9 +548,7 @@ textarea{
 
 }
 
-/* ===========================
-   Selection Color
-=========================== */
+
 
 ::selection{
 
@@ -574,9 +558,7 @@ textarea{
 
 }
 
-/* ===========================
-   Responsive
-=========================== */
+
 
 @media(max-width:992px){
 
@@ -673,9 +655,7 @@ textarea{
 
 }
 
-/* ===========================
-   Internship Cards
-=========================== */
+
 
 .internship-list{
     display:grid;
@@ -763,9 +743,6 @@ textarea{
     transform:translateY(-2px);
     box-shadow:0 10px 25px rgba(37,99,235,.3);
 }
-/* ===========================
-   Card Actions
-=========================== */
 
 .card-actions{
 

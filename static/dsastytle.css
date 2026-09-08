@@ -1,13 +1,4 @@
-/* ===========================
-   Google Font
-=========================== */
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
-
-/* ===========================
-   Reset
-=========================== */
 
 *{
     margin:0;
@@ -82,9 +73,7 @@ body{
     overflow-x:hidden;
 }
 
-/* ===========================
-   Background Grid
-=========================== */
+
 
 body::before{
     content:"";
@@ -113,9 +102,6 @@ body::after{
     z-index:-1;
 }
 
-/* ===========================
-   Container
-=========================== */
 
 .container{
     width:min(1200px,90%);
@@ -123,9 +109,7 @@ body::after{
     padding:50px 0 80px;
 }
 
-/* ===========================
-   Back Link
-=========================== */
+
 
 .back-link{
     display:inline-flex;
@@ -148,9 +132,7 @@ body::after{
     transform:translateX(-5px);
 }
 
-/* ===========================
-   Hero
-=========================== */
+
 
 .hero{
     margin-bottom:50px;
@@ -168,9 +150,7 @@ body::after{
     line-height:1.7;
 }
 
-/* ===========================
-   Stats Cards
-=========================== */
+
 
 .stats-cards{
     display:grid;
@@ -219,10 +199,6 @@ body::after{
     font-weight:700;
 }
 
-/* ===========================
-   Glass Card
-=========================== */
-
 .add-problem,
 .problems-section{
 
@@ -235,9 +211,7 @@ body::after{
 
 }
 
-/* ===========================
-   Section Titles
-=========================== */
+
 
 .add-problem h2,
 .problems-section h2{
@@ -255,9 +229,6 @@ body::after{
 
 }
 
-/* ===========================
-   Form
-=========================== */
 
 .problem-form{
 
@@ -332,9 +303,7 @@ textarea{
 
 }
 
-/* ===========================
-   Button
-=========================== */
+
 
 .add-btn{
 
@@ -364,9 +333,6 @@ textarea{
 
 }
 
-/* ===========================
-   Filter Bar
-=========================== */
 
 .filter-bar{
 
@@ -403,9 +369,7 @@ textarea{
 
 }
 
-/* ===========================
-   Empty State
-=========================== */
+
 
 .empty-state{
 
@@ -457,9 +421,7 @@ textarea{
 
 }
 
-/* ===========================
-   Responsive
-=========================== */
+
 
 @media(max-width:992px){
 
@@ -502,9 +464,7 @@ textarea{
 
 }
 
-/* ===========================
-   Problem List
-=========================== */
+
 
 .problem-list{
     display:flex;
@@ -512,9 +472,7 @@ textarea{
     gap:20px;
 }
 
-/* ===========================
-   Problem Card
-=========================== */
+
 
 .problem-card{
 

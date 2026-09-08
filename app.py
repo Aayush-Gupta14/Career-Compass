@@ -14,17 +14,14 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///career_compass.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 
-# Initialize Database
 db.init_app(app)
 
 
-# Register Blueprints
 app.register_blueprint(auth_bp)
 app.register_blueprint(dsa_bp)
 app.register_blueprint(internship_bp)
 
 
-# Flask-Login Setup
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = "auth.login"
@@ -35,7 +32,6 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 
-# Landing Page
 @app.route("/")
 def index():
     if current_user.is_authenticated:
@@ -44,14 +40,12 @@ def index():
     return redirect(url_for("auth.login"))
 
 
-# Home Page
 @app.route("/home")
 @login_required
 def home():
     return render_template("home.html")
 
 
-# Create Database Tables
 with app.app_context():
     db.create_all()
 

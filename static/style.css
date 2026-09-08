@@ -16,9 +16,7 @@ body {
     background-size: 40px 40px;
 }
 
-/* ===========================
-   Container
-=========================== */
+
 
 .container {
     width: 90%;
@@ -32,9 +30,7 @@ body {
     padding: 35px 0;
 }
 
-/* ===========================
-   Navbar
-=========================== */
+
 
 .navbar {
     display: flex;
@@ -70,9 +66,7 @@ body {
     box-shadow: 0 8px 20px rgba(239,68,68,.35);
 }
 
-/* ===========================
-   Hero
-=========================== */
+
 
 .hero {
     text-align: center;
@@ -115,9 +109,7 @@ body {
     line-height:1.7;
 }
 
-/* ===========================
-   Cards
-=========================== */
+
 
 .cards {
     display: flex;
@@ -188,9 +180,7 @@ body {
      transform:translateX(5px);
 }
 
-/* ===========================
-   Footer
-=========================== */
+
 
 footer {
     margin-top: auto;
@@ -205,9 +195,7 @@ footer {
 
 }
 
-/* ===========================
-   Responsive
-=========================== */
+
 
 @media (max-width:768px) {
 
